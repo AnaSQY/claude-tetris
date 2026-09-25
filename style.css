@@ -207,7 +207,7 @@ kbd {
   border-radius: 4px;
 }
 
-.overlay.hidden {
+.hidden {
   display: none;
 }
 
@@ -232,7 +232,7 @@ kbd {
   color: var(--overlay-score);
 }
 
-#restart-btn {
+.primary-btn {
   margin-top: 8px;
   background: var(--btn-bg);
   color: var(--btn-text);
@@ -246,6 +246,135 @@ kbd {
   transition: background 0.15s;
 }
 
-#restart-btn:hover {
+.primary-btn:hover {
+  background: var(--btn-hover);
+}
+
+/* ---- Pantalla inicial ---- */
+.start-box {
+  width: 260px;
+}
+
+#start-title {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 6px;
+  color: var(--title-color);
+}
+
+/* ---- Estadísticas y tabla de records ---- */
+.stats-block {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 12px;
+  color: var(--control-text);
+}
+
+.stats-block strong {
+  color: var(--value-color);
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.highscores {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.highscores-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.link-btn {
+  background: none;
+  border: none;
+  color: var(--control-text);
+  font-size: 10px;
+  text-decoration: underline;
+  cursor: pointer;
+  letter-spacing: 1px;
+  padding: 0;
+}
+
+.link-btn:hover {
+  color: var(--overlay-title);
+}
+
+.highscore-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.highscore-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 13px;
+  padding: 3px 8px;
+  border-radius: 3px;
+  color: var(--text);
+  background: rgba(127, 127, 127, 0.08);
+}
+
+.highscore-list li.highscore-empty {
+  justify-content: center;
+  color: var(--label-color);
+  font-family: inherit;
+  background: none;
+}
+
+.highscore-list li.highscore-new {
+  background: var(--value-color);
+  color: var(--btn-text);
+  font-weight: 700;
+}
+
+/* ---- Formulario de nombre (nueva puntuación) ---- */
+#overlay-run-stats {
+  font-size: 12px;
+  color: var(--control-text);
+}
+
+.name-entry {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+.name-entry.hidden {
+  display: none;
+}
+
+#name-input {
+  flex: 1;
+  min-width: 0;
+  background: var(--kbd-bg);
+  border: 1px solid var(--kbd-border);
+  border-radius: 4px;
+  padding: 8px 10px;
+  color: var(--text);
+  font-size: 13px;
+}
+
+#save-score-btn {
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  border: none;
+  border-radius: 4px;
+  padding: 8px 14px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+#save-score-btn:hover {
   background: var(--btn-hover);
 }
