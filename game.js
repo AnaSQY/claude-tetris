@@ -67,6 +67,10 @@ const MAX_HIGHSCORES = 5;
 let board, current, next, score, lines, level, paused, gameOver, lastTime, dropAccum, dropInterval, animId;
 let combo, comboMax;
 
+// gameOver=true hasta el primer init() (botón "Jugar"): bloquea el keydown listener,
+// que ya está registrado, para que no toque current/board mientras aún son undefined.
+gameOver = true;
+
 function applyTheme(theme) {
   document.body.classList.toggle('light', theme === 'light');
   themeToggle.checked = theme === 'light';
