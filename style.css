@@ -46,6 +46,38 @@ body.light {
   --btn-hover: #5b78e5;
 }
 
+/* ---- Skins ---- */
+/* Retro no necesita overrides: usa las variables de :root / body.light tal cual. */
+/* Neon fuerza fondo oscuro incluso en modo claro (misma especificidad que body.light,
+   pero definida después en la hoja, así que gana también con body.light activo). */
+body.skin-neon {
+  --board-bg: #050505;
+  --board-border: #00e5ff;
+  --grid-line: #0a1a1a;
+}
+
+body.skin-pastel {
+  --board-bg: #2a2436;
+  --board-border: #dcb8e8;
+  --grid-line: #352d44;
+}
+body.skin-pastel.light {
+  --board-bg: #fff8f2;
+  --board-border: #e8d5e8;
+  --grid-line: #f5ecf5;
+}
+
+body.skin-pixel {
+  --board-bg: #141414;
+  --board-border: #555;
+  --grid-line: #262626;
+}
+body.skin-pixel.light {
+  --board-bg: #e8e8e8;
+  --board-border: #999;
+  --grid-line: #d0d0d0;
+}
+
 body {
   background: var(--bg);
   color: var(--text);
@@ -193,6 +225,16 @@ kbd {
 
 .switch input:checked + .switch-slider::before {
   transform: translateX(18px);
+}
+
+#skin-select {
+  background: var(--kbd-bg);
+  border: 1px solid var(--kbd-border);
+  color: var(--kbd-text);
+  border-radius: 4px;
+  padding: 4px 6px;
+  font-size: 12px;
+  font-family: inherit;
 }
 
 /* ---- Overlay ---- */
