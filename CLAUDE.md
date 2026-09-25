@@ -21,7 +21,7 @@ There is no build, lint, or test command — the project has none configured.
 
 Three files, single global scope, no modules:
 
-- `index.html` — DOM shell: `#board` canvas (300×600, 10×20 grid at `BLOCK=30`px), `#next-canvas` preview, HUD spans (`#score`, `#lines`, `#level`), and `#overlay` for pause/game-over.
+- `index.html` — DOM shell: `#board` canvas (300×600, 10×20 grid at `BLOCK=30`px), `#next-canvas` preview, HUD spans (`#score`, `#lines`, `#level`), `#overlay` for game-over, and `#pause-overlay` for the pause menu.
 - `style.css` — dark/retro arcade theme.
 - `game.js` — all logic, procedural style, driven by module-level mutable state (`board`, `current`, `next`, `score`, `lines`, `level`, `paused`, `gameOver`, `dropInterval`, etc.) rather than a class or state container.
 
@@ -37,8 +37,9 @@ Key mechanics, all in `game.js`:
 - **Scoring**: `LINE_SCORES = [0, 100, 300, 500, 800]` multiplied by `level`; hard drop adds 2 pts/row, soft drop 1 pt/row.
 - **Leveling/speed**: level = `floor(lines / 10) + 1`; `dropInterval = max(100, 1000 - (level-1)*90)`.
 - **Ghost piece**: `ghostY()` projects the landing row; drawn via `drawBlock(..., alpha=0.2)`.
+- **Pause menu**: `togglePause()` (bound to `KeyP` and `Escape`) shows/hides `#pause-overlay` (separate from the game-over `#overlay`) with Reanudar/Reiniciar/Ver controles buttons and a `#start-level-select` (1–10). Resuming resets `lastTime`/`dropAccum` to avoid a drop jump. The keydown handler returns early while `paused` (or `gameOver`), blocking movement/rotation/drop input. Start level persists in `localStorage` (`tetris-start-level`, read via `getStartLevel()`) and is applied to `level`/`dropInterval` in `init()`.
 
-Input is a single `keydown` listener switching on `e.code` (arrows, `KeyX` to rotate, `Space` for hard drop, `KeyP` to pause).
+Input is a single `keydown` listener switching on `e.code` (arrows, `KeyX` to rotate, `Space` for hard drop, `KeyP`/`Escape` to pause).
 
 ### Tunable constants (top of `game.js`)
 
