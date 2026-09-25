@@ -37,9 +37,10 @@ Key mechanics, all in `game.js`:
 - **Scoring**: `LINE_SCORES = [0, 100, 300, 500, 800]` multiplied by `level`; hard drop adds 2 pts/row, soft drop 1 pt/row.
 - **Leveling/speed**: level = `floor(lines / 10) + 1`; `dropInterval = max(100, 1000 - (level-1)*90)`.
 - **Ghost piece**: `ghostY()` projects the landing row; drawn via `drawBlock(..., alpha=0.2)`.
+- **Skins**: `SKINS` (`retro`/`neon`/`pastel`/`pixel`) each hold a `colors` palette (same 9-entry index as `COLORS`) and a `style` name. `drawBlock()` looks up the active `skin` and dispatches to `drawFlatBlock`/`drawNeonBlock`/`drawPastelBlock`/`drawPixelBlock`; `globalAlpha`/`shadowBlur` are reset after every block so the ghost piece and later draws aren't affected. Active skin persists in `localStorage` (`tetris-skin`) via `applySkin()`/`initSkin()`, mirrors the light/dark theme pattern, and toggles a `body.skin-<name>` class (see `style.css` for the per-skin `--board-bg`/`--board-border`/`--grid-line` overrides, combined with `body.light`). Changing the `#skin-select` dropdown re-renders `draw()`/`drawNext()` immediately, even while paused.
 
 Input is a single `keydown` listener switching on `e.code` (arrows, `KeyX` to rotate, `Space` for hard drop, `KeyP` to pause).
 
 ### Tunable constants (top of `game.js`)
 
-`COLS`, `ROWS`, `BLOCK`, `COLORS`, `PIECES`, `LINE_SCORES`, initial `dropInterval`. If `COLS`/`ROWS`/`BLOCK` change, update the `#board` canvas `width`/`height` in `index.html` to match (`COLS×BLOCK` by `ROWS×BLOCK`).
+`COLS`, `ROWS`, `BLOCK`, `COLORS`, `PIECES`, `LINE_SCORES`, `SKINS`, initial `dropInterval`. If `COLS`/`ROWS`/`BLOCK` change, update the `#board` canvas `width`/`height` in `index.html` to match (`COLS×BLOCK` by `ROWS×BLOCK`).
