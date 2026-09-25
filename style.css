@@ -232,7 +232,7 @@ kbd {
   color: var(--overlay-score);
 }
 
-#restart-btn {
+.overlay-btn {
   margin-top: 8px;
   background: var(--btn-bg);
   color: var(--btn-text);
@@ -246,6 +246,62 @@ kbd {
   transition: background 0.15s;
 }
 
-#restart-btn:hover {
+.overlay-btn:hover {
   background: var(--btn-hover);
+}
+
+/* ---- Menú de pausa ---- */
+.pause-box {
+  min-width: 220px;
+}
+
+.pause-title {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: 4px;
+  color: var(--value-color);
+}
+
+.controls-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.controls-list.hidden {
+  display: none;
+}
+
+.controls-list li {
+  font-size: 12px;
+  color: var(--control-text);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  justify-content: center;
+}
+
+.level-select-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  margin-top: 4px;
+}
+
+.level-select-row label {
+  font-size: 12px;
+  color: var(--control-text);
+}
+
+.level-select-row select {
+  background: var(--kbd-bg);
+  color: var(--kbd-text);
+  border: 1px solid var(--kbd-border);
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 13px;
 }
