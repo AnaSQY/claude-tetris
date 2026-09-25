@@ -37,6 +37,7 @@ Key mechanics, all in `game.js`:
 - **Scoring**: `LINE_SCORES = [0, 100, 300, 500, 800]` multiplied by `level`; hard drop adds 2 pts/row, soft drop 1 pt/row.
 - **Leveling/speed**: level = `floor(lines / 10) + 1`; `dropInterval = max(100, 1000 - (level-1)*90)`.
 - **Ghost piece**: `ghostY()` projects the landing row; drawn via `drawBlock(..., alpha=0.2)`.
+- **Highscores/combo**: `combo` counts consecutive `lockPiece()` calls whose `clearLines()` cleared at least one line, resetting to 0 on a clear-less lock; `comboMax` tracks the run's peak. Top-5 scores persist to `localStorage` (`tetris-highscores`, array of `{name, score, lines, combo, date}`); best combo/max lines persist to `tetris-stats` (`{bestCombo, maxLines}`). `endGame()` checks `qualifiesForHighscore()` to show the name-entry form (`#name-entry`); `renderHighscores()` always uses `textContent` (never `innerHTML`) to render names. A `#start-overlay` screen (shown before the first `init()`, via the `#play-btn` handler) and the game-over `#overlay` both render the table and expose a reset button (`resetHighscores()`, gated by `confirm()`). The global `keydown` listener bails out early when `document.activeElement` is an `INPUT`/`TEXTAREA`, so typing a name never triggers game controls.
 
 Input is a single `keydown` listener switching on `e.code` (arrows, `KeyX` to rotate, `Space` for hard drop, `KeyP` to pause).
 
